@@ -7,6 +7,8 @@ const cors = require('cors');
 const path = require('path');
 const db = require ('./db/db');
 
+const usuarioRoutes = require('./routes/usuarioRoutes');
+
 
 const corsOptions = {
     origin: ['http://localhost:3333'],
@@ -26,6 +28,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'pages','home.html'));
 });
 
+
+app.use('/',usuarioRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
